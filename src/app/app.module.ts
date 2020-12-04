@@ -20,9 +20,9 @@ const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigato
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
-      clientId: '6226576d-37e9-49eb-b201-ec1eeb0029b6',
-      redirectUri: 'http://localhost:4200',
-      postLogoutRedirectUri: 'http://localhost:4200'
+      clientId: 'Enter_the_Application_Id_Here',
+      authority: 'Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here',
+      redirectUri: 'Enter_the_Redirect_Uri_Here'
     },
     cache: {
       cacheLocation: BrowserCacheLocation.LocalStorage,
@@ -33,7 +33,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
-  protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['user.read']);
+  protectedResourceMap.set('Enter_the_Graph_Endpoint_Herev1.0/me', ['user.read']);
 
   return {
     interactionType: InteractionType.Redirect,
