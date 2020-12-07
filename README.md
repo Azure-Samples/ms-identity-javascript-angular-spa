@@ -1,57 +1,83 @@
-# Project Name
+---
+page_type: sample
+languages:
+- javascript
+- typescript
+products:
+- angular
+- ms-graph
+- azure-active-directory
+description: "Demonstrates how to use MSAL Angular v2 to login, logout, protect a route, and acquire an access token for a protected resource such as Microsoft Graph."
+urlFragment: "ms-identity-javascript-angular-spa"
+---
 
-(short, 1-3 sentenced, description of the project)
+# Angular single-page application built with MSAL Angular v2 and Microsoft identity platform
+
+This sample demonstrates how to use MSAL Angular v2 to login, logout, conditionally render components to authenticated users, and acquire an access token for a protected resource such as Microsoft Graph.
 
 ## Features
 
-This project framework provides the following features:
+This sample demonstrates the following MSAL Angular concepts:
 
-* Feature 1
-* Feature 2
-* ...
+* Configuration
+* Login
+* Logout
+* Protecting a route
+* Acquiring an access token and calling Microsoft Graph
+
+## Contents
+
+| File/folder       | Description                                |
+|-------------------|--------------------------------------------|
+| `AppCreationScripts` | Contains automation scripts for Powershell users (can be safely removed if desired). |
+| `e2e`             | End-to-end test files.                     |
+| `src`             | Sample source code.                        |
+| `.editorconfig`   | Defines editor config settings.            |
+| `.gitignore`      | Define what to ignore at commit time.      |
+| `angular.json`    | Angular configuration file.                |
+| `browserslist`    | BrowsersList configuration file.           |
+| `CHANGELOG.md`    | List of changes to the sample.             |
+| `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
+| `karma.conf.js`   | Configuration for the karma test runner.   |
+| `LICENSE`         | The license for the sample.                |
+| `ng_README.md`    | README describing how to run the sample    |
+| `package-lock.json` | Lockfile for npm.                        |
+| `package.json`    | Package manifest for npm.                  |
+| `README.md`       | This README file.                          |
+| `tsconfig.*.json` | TypeScript configuration files.            |
+| `tslint.json`     | TS Lint configuration files.               |
+
+**Note:** This sample's structure was generated with the [Angular CLI](https://cli.angular.io/).
 
 ## Getting Started
 
 ### Prerequisites
 
-(ideally very short, if any)
+[Node.js](https://nodejs.org/en/) must be installed to run this sample.
 
-- OS
-- Library version
-- ...
+### Setup
 
-### Installation
+1. [Register a new application](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) in the [Azure Portal](https://portal.azure.com). Ensure that the application is enabled for the [authorization code flow with PKCE](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow). This will require that you redirect URI configured in the portal is of type `SPA`.
+1. Clone this repository `git clone https://github.com/Azure-Samples/ms-identity-javascript-angular-spa.git`
+1. Open the [/src/app.module.ts](./src/app.module.ts) file and provide the required configuration values.
+    1. Replace the string `"Enter_the_Application_Id_Here"` with your app/client ID on AAD Portal.
+    1. Replace the string `"Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here"` with `"https://login.microsoftonline.com/common/"` (*note*: This is for multi-tenant applications located on the global Azure cloud. For more information, see the [documentation](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript-auth-code)).
+    1. Replace the string `"Enter_the_Redirect_Uri_Here"` with the redirect uri you setup on AAD Portal.
+    1. Replace the string `"Enter_the_Graph_Endpoint_Herev1.0/me"` with `"https://graph.microsoft.com/v1.0/me"` (*note*: This is for MS Graph instance located on the global Azure cloud. For more information, see the [documentation](https://docs.microsoft.com/en-us/graph/deployments))
 
-(ideally very short)
+1. On the command line, navigate to the root of the repository, and run `npm install` to install the project dependencies via npm.
 
-- npm install [package name]
-- mvn install
-- ...
+## Run the sample
 
-### Quickstart
-(Add steps to get up and running quickly)
+1. Start the sample application with `npm start`.
+2. In your browser, navigate to [http://localhost:4200](http://localhost:4200).
 
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
+## Contributing
 
+If you'd like to contribute to this sample, see [CONTRIBUTING.MD](./CONTRIBUTING.md).
 
-## Demo
+## Code of Conduct
 
-A demo app is included to show how to use the project.
-
-To run the demo, follow these steps:
-
-(Add steps to start up the demo)
-
-1.
-2.
-3.
-
-## Resources
-
-(Any additional resources or related projects)
-
-- Link to supporting information
-- Link to similar sample
-- ...
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
