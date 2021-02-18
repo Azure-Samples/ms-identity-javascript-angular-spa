@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, OnDestroy, Injectable } from '@angular/core';
 import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
-import { EventMessage, EventType, InteractionType, PopupRequest, RedirectRequest } from '@azure/msal-browser';
+import { AuthenticationResult, EventMessage, EventType, InteractionStatus, InteractionType, PopupRequest, RedirectRequest } from '@azure/msal-browser';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
@@ -10,9 +10,9 @@ import { filter, takeUntil } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Angular 11 - Angular v2 Sample';
+  title = 'Angular 11 - MSAL v2 Quickstart Sample';
   isIframe = false;
-  loggedIn = false;
+  loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
 
   constructor(
@@ -24,30 +24,32 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isIframe = window !== window.parent && !window.opener;
 
-    this.checkAccount();
-
-    this.msalBroadcastService.msalSubject$
+    this.msalBroadcastService.inProgress$
       .pipe(
-        filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS || msg.eventType === EventType.ACQUIRE_TOKEN_SUCCESS),
+        filter((status: InteractionStatus) => status === InteractionStatus.None),
         takeUntil(this._destroying$)
       )
-      .subscribe((result) => {
-        this.checkAccount();
-      });
+      .subscribe(() => {
+        this.setLoginDisplay();
+      })
   }
 
-  checkAccount() {
-    this.loggedIn = this.authService.instance.getAllAccounts().length > 0;
+  setLoginDisplay() {
+    this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
   }
 
   login() {
     if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
       if (this.msalGuardConfig.authRequest){
         this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest)
-          .subscribe(() => this.checkAccount());
+          .subscribe((response: AuthenticationResult) => {
+            this.authService.instance.setActiveAccount(response.account);
+          });
         } else {
           this.authService.loginPopup()
-            .subscribe(() => this.checkAccount());
+            .subscribe((response: AuthenticationResult) => {
+              this.authService.instance.setActiveAccount(response.account);
+            });
       }
     } else {
       if (this.msalGuardConfig.authRequest){
