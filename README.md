@@ -30,7 +30,6 @@ This sample demonstrates the following MSAL Angular concepts:
 | File/folder       | Description                                |
 |-------------------|--------------------------------------------|
 | `AppCreationScripts` | Contains automation scripts for Powershell users (can be safely removed if desired). |
-| `e2e`             | End-to-end test files.                     |
 | `src`             | Sample source code.                        |
 | `.editorconfig`   | Defines editor config settings.            |
 | `.gitignore`      | Define what to ignore at commit time.      |
@@ -41,7 +40,6 @@ This sample demonstrates the following MSAL Angular concepts:
 | `karma.conf.js`   | Configuration for the karma test runner.   |
 | `LICENSE`         | The license for the sample.                |
 | `ng_README.md`    | README describing how to run the sample    |
-| `package-lock.json` | Lockfile for npm.                        |
 | `package.json`    | Package manifest for npm.                  |
 | `README.md`       | This README file.                          |
 | `tsconfig.*.json` | TypeScript configuration files.            |
