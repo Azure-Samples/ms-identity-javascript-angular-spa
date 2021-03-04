@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
       )
       .subscribe(() => {
         this.setLoginDisplay();
-      })
+      });
   }
 
   setLoginDisplay() {
