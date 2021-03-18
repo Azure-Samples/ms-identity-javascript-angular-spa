@@ -30,7 +30,7 @@
         ],
         "codeConfigurations": [
           {
-          "settingFile": "/src/app/app.module.ts",
+            "settingFile": "/src/app/app.module.ts",
             "replaceTokens":
               {
               "appId": "Enter_the_Application_Id_Here",
@@ -39,7 +39,14 @@
               "redirectUri": "Enter_the_Redirect_Uri_Here",
               "msgraphEndpointHost": "Enter_the_Graph_Endpoint_Here"
             }
-          }
+          },
+          {
+            "settingFile": "/src/app/profile/profile.component.ts",
+            "replaceTokens":
+              {
+              "msgraphEndpointHost": "Enter_the_Graph_Endpoint_Here"
+              }
+            }
         ]
       }
     ]
