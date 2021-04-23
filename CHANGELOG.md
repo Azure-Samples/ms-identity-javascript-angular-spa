@@ -1,13 +1,11 @@
-## [project-title] Changelog
+# CHANGELOG
 
-<a name="x.y.z"></a>
-# x.y.z (yyyy-mm-dd)
+## 04/22/2021
 
-*Features*
-* ...
+* Bumped msal-browser and msal-angular
+* Fixed type error on home.component.ts
+* Replaced logout with logoutPopup and logoutRedirect
 
-*Bug Fixes*
-* ...
+## 12/04/2020
 
-*Breaking Changes*
-* ...
+* Initial sample.
