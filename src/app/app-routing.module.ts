@@ -20,6 +20,11 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    // Needed for Error routing
+    path: 'error',
+    component: HomeComponent
   }
 ];
 
