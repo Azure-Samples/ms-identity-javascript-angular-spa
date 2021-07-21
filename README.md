@@ -60,7 +60,7 @@ This sample demonstrates the following MSAL Angular concepts:
 1. Open the [/src/app/app.module.ts](./src/app/app.module.ts) file and provide the required configuration values.
     1. Replace the string `"Enter_the_Application_Id_Here"` with your app/client ID on AAD Portal.
     1. Replace the string `"Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here"` with `"https://login.microsoftonline.com/common/"`
-> :information_soruce: if you would like to sign-in users with your tenant only, use your tenant ID instead of `common`.
+    > :information_source: if you would like to sign-in users with your tenant only, use your tenant ID instead of `common`.
     1. Replace the string `"Enter_the_Redirect_Uri_Here"` with the redirect uri you setup on AAD Portal.
     1. Replace the string `"Enter_the_Graph_Endpoint_Herev1.0/me"` with `"https://graph.microsoft.com/v1.0/me"`
 1. Open the [/src/app/profile/profile.component.ts](./src/app/profile/profile.component.ts) file and provide the required configuration value.
