@@ -69,7 +69,7 @@ Function ConfigureApplications {
     $configFile = $pwd.Path + "\..\src\app\app.module.ts"
     Write-Host "Updating the sample code ($configFile)"
     $dictionary = @{ "Enter_the_Application_Id_Here" = $spaAadApplication.AppId; "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here" = "https://login.microsoftonline.com/common"; "Enter_the_Redirect_Uri_Here" = $spaAadApplication.Spa.RedirectUris[0]; "Enter_the_Graph_Endpoint_Here" = 'https://graph.microsoft.com/v1.0/me/' };
-    ReplaceInTextFile -configFilePath $configFile -dictionary $dictionary
+    UpdateTextFile -configFilePath $configFile -dictionary $dictionary
     
     # Update config file for 'spa'
     $configFile = $pwd.Path + "\..\src\app\profile\profile.component.ts"
@@ -101,31 +101,6 @@ Function UpdateTextFile([string] $configFilePath, [System.Collections.HashTable]
         foreach ($key in $dictionary.Keys) {
             if ($line.Contains($key)) {
                 $lines[$index] = UpdateLine $line $dictionary[$key]
-            }
-        }
-        $index++
-    }
-
-    Set-Content -Path $configFilePath -Value $lines -Force
-}
-
-Function ReplaceInLine([string] $line, [string] $key, [string] $value) {
-    $index = $line.IndexOf($key)
-    if ($index -ige 0) {
-        $index2 = $index + $key.Length
-        $line = $line.Substring(0, $index) + $value + $line.Substring($index2)
-    }
-    return $line
-}
-
-Function ReplaceInTextFile([string] $configFilePath, [System.Collections.HashTable] $dictionary) {
-    $lines = Get-Content $configFilePath
-    $index = 0
-    while ($index -lt $lines.Length) {
-        $line = $lines[$index]
-        foreach ($key in $dictionary.Keys) {
-            if ($line.Contains($key)) {
-                $lines[$index] = ReplaceInLine $line $key $dictionary[$key]
             }
         }
         $index++
