@@ -10,7 +10,7 @@ import { filter, takeUntil } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Angular 11 - MSAL v2 Quickstart Sample';
+  title = 'Angular 14 - MSAL v2 Quickstart Sample';
   isIframe = false;
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();

@@ -16,7 +16,7 @@ type ProfileType = {
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profile!: ProfileType;
+  profile!: ProfileType | null;
 
   constructor(
     private http: HttpClient
