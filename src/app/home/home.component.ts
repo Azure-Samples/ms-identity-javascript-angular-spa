@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
         this.authService.instance.setActiveAccount(payload.account);
         this.setLoginDisplay();
       });
-       this.setLoginDisplay();
+      this.setLoginDisplay();
   }
 
   setLoginDisplay() {
