@@ -9,6 +9,12 @@
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
   ```
 
+1. In PowerShell run the following command to install the Microsoft.Graph PowerShell SDK:
+
+  ```PowerShell
+  Install-Module Microsoft.Graph -Scope CurrentUser
+  ```
+
 1. Run the script to create your Azure AD application and configure the code of the sample application accordingly.
 
   ```PowerShell
